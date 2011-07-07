@@ -107,6 +107,8 @@ let NERDTreeShowHidden = 1
 """ vim option
 " ctags
 set tags=tags
+" bell setting
+set visualbell
 " editer action
 set autoread
 set backspace=indent,eol,start
