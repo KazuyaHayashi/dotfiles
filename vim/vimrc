@@ -1,0 +1,229 @@
+" vim script manager
+" use vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+" self management
+Bundle "git://github.com/gmarik/vundle"
+" vim scripts
+Bundle "git://github.com/Shougo/unite.vim.git"
+Bundle "git://github.com/Shougo/neocomplcache.git"
+Bundle "git://github.com/tpope/vim-surround.git"
+Bundle "git://github.com/scrooloose/nerdtree.git"
+Bundle "git://github.com/vim-scripts/taglist.vim.git"
+Bundle "git://github.com/jimenezrick/vimerl.git"
+Bundle 'project.tar.gz'
+Bundle 'tagexplorer.vim'
+Bundle 'taglist-plus'
+Bundle 'git://github.com/vim-scripts/ManPageView.git'
+Bundle 'git://github.com/vim-scripts/erlang-indent-file.git'
+Bundle 'git://github.com/vim-scripts/vim-erlang-skeleteons.git'
+" Bundle "git://github.com/Shougo/vimproc.git" 
+" Bundle "git://github.com/Shougo/vimshell.git"
+" Bundle "git://github.com/Shougo/vimfiler.git"
+" Bundle "git://github.com/scrooloose/nerdcommenter.git"
+" Bundle "git://github.com/msanders/snipmate.vim.git"
+" Bundle "git://gist.github.com/165090.git"
+Bundle "git://github.com/thinca/vim-ref.git"
+" Bundle "git://github.com/tomtom/ttags_vim.git"
+autocmd!
+filetype indent plugin on
+
+""" neocomplecache
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+    
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+
+""" taglist
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_Show_One_File = 1
+let Tlist_Exit_OnlyWindow = 1
+map <silent><leader>tl :TlistToggle<cr>
+""" tagexplorer
+let TE_Ctags_Path = "/usr/bin/ctags"
+
+""" NERDTree
+let NERDTreeQuitOnOpen = 1
+let NERDTreeShowHidden = 1 
+
+""" vim option
+" ctags
+set tags=tags
+" editer action
+set autoread
+set backspace=indent,eol,start
+set hidden
+" display setting
+syntax on
+set title
+set number
+set statusline=%n\:%y%F\ \|%{(&fenc!=''?&fenc:&enc).'\|'.&ff.'\|'}%m%r\ %{strftime('%c')}%=<%l/%L:%p%%>
+set laststatus=2
+set cmdheight=2
+set showcmd
+" tab 
+set autoindent
+set smartindent
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set smarttab
+set expandtab
+" menu select
+set wildmode=longest,list
+" encoding
+set fileencodings=utf-8,iso-2022-jp,sjis,euc-jp
+set encoding=utf-8
+" search
+set ignorecase
+set smartcase
+set wrapscan
+set hlsearch
+set showmatch
+" filetype registory
+autocmd! BufRead,BufNewFile *.php set filetype=php
+autocmd! BufRead,BufNewFile *.py set filetype=python
+autocmd! BufRead,BufNewFile *.scala set filetype=scala
+
+""" Key mapping
+"" search key mapping
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+"" vimrc reload and edit 
+nnoremap <silent> <C-r>s :source $HOME/.vimrc<Enter>
+nnoremap <silent> <C-r>e :tabnew $HOME/.vimrc<Enter>
+" toggle {{{
+function! ToggleNumber()
+    if &number == 0
+        echo "Current: number"
+        set number
+    else
+        echo "Current: nonumber"
+        set nonumber
+    endif
+endfunction
+nnoremap <silent> <C-d><C-n> :call ToggleNumber()<Enter>
+
+function! ToggleWrap()
+    if &wrap == 0
+        echo "Current: wrap"
+        set wrap
+    else
+        echo "Current: nowrap"
+        set nowrap
+    endif
+endfunction
+nnoremap <silent> <C-d><C-w> :call ToggleWrap()<Enter>
+
+" when close, back to left
+function! ClosePairOn()
+    inoremap [ []<Left>
+    inoremap { {}<Left>
+    inoremap ( ()<Left>
+    inoremap " ""<Left>
+    inoremap ' ''<Left>
+    inoremap ` ``<Left>
+endfunction
+function! ClosePairOff()
+    iunmap [
+    iunmap {
+    iunmap (
+    iunmap "
+    iunmap '
+    iunmap `
+endfunction
+function! ToggleClosePair()
+    if !exists("g:closepair_status")
+        let g:closepair_status = 1
+    endif
+
+    if(g:closepair_status)
+        let g:closepair_status = 0
+        echo "Current: Closing Pair On"
+        call ClosePairOn()
+    else
+        let g:closepair_status = 1
+        echo "Current: Closing Pair Off"
+        call ClosePairOff()
+    endif
+endfunction
+nnoremap <silent> <C-p>{ :call ToggleClosePair()<Enter>
+
+function! CwordVimGrep()
+    let s:keyword = expand("<cword>")
+    let s:command = ":vimgrep /".s:keyword."/g %<LEFT><LEFT><LEFT><LEFT>"
+    echo s:command
+    :execute s:command
+endfunction
+
+" buffer keymap
+nnoremap <silent> <C-b>p :bprevious<Enter> 
+nnoremap <silent> <C-b>n :bnext<Enter>
+" search keymap
+"nnoremap <C-v>g :vimgrep /expand("<cword>")/g %<LEFT><LEFT><LEFT><LEFT>
+nnoremap <C-v>g :call CwordVimGrep()<Enter>
+
+" }}}
+
