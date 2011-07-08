@@ -3,7 +3,7 @@
 function install_vundle()
 {
     if [ ! -e ~/.vim/bundle/vundle ]; then
-        git checkout git://github.com/gmarik/vundle ~/.vim/bundle/vundle
+        git clone git://github.com/gmarik/vundle ~/.vim/bundle/vundle
     fi
 }
 
