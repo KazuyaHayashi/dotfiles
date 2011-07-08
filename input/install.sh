@@ -2,7 +2,7 @@
 
 function setup()
 {
-    ln -s `pwd`/inputrc ~/.inputrc
+    ln -s ${CUR_DIR}/input/inputrc ~/.inputrc
 }
 
 echo "install inputrc"

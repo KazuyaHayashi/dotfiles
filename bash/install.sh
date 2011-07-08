@@ -2,7 +2,7 @@
 
 function setup()
 {
-    ln -s `pwd`/bashrc ~/.bashrc
+    ln -s ${CUR_DIR}/bash/bashrc ~/.bashrc
 }
 
 echo "install bashrc"

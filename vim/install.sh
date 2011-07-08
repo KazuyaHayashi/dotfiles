@@ -16,7 +16,7 @@ function init()
 
 function setup()
 {
-    ln -s `pwd`/vimrc ~/.vimrc
+    ln -s ${CUR_DIR}/vim/vimrc ~/.vimrc
     vim -c BundleInstall
 }
 

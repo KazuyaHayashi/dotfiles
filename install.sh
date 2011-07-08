@@ -1,7 +1,9 @@
 #!/bin/sh
 
+# global 
+export CUR_DIR=`pwd`
+# const
 INSTALLER=install.sh
-CUR_DIR=`pwd`
 
 for directory in `ls ${CUR_DIR}`
 do
