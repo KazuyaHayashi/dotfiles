@@ -1,5 +1,23 @@
 #!/bin/sh
 
+#
+# function
+#
+function backup()
+{
+    if [ -e ~/${BACKUP_DIR} ]; then
+        mkdir -p ~/${BACKUP_DIR}/vim
+        if [ -d ~/.vim ]; then
+            mv ~/.vim ~/${BACKUP_DIR}/vim
+        fi
+        if [ -L ~/.vimrc ]; then
+            return 1
+        fi
+        mv ~/.vimrc ~/${BACKUP_DIR}/vim
+    fi
+    return 0
+}
+
 function install_vundle()
 {
     if [ ! -e ~/.vim/bundle/vundle ]; then
@@ -20,6 +38,10 @@ function setup()
     vim -c BundleInstall
 }
 
+#
+# main
+#
+backup
 echo "install vimrc"
 echo "make .vim directory"
 init
