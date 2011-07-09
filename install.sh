@@ -29,8 +29,8 @@ function setup()
 {
     for install_script in `ls -R */${INSTALLER}`
     do
-        write_log "${CUR_DIR}/${directory}/${INSTALLER}"
-        sh ${CUR_DIR}/${directory}/${INSTALLER}
+        write_log "${CUR_DIR}/${install_script}"
+        sh ${CUR_DIR}/${install_script}
     done
 }
 
