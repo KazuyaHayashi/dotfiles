@@ -1,0 +1,6 @@
+ - bashrc
+
+ - install.sh
+bashrc を置き換えます。
+元の bashrc は ~/rc.backup/bash/.bashrc に移動します。
+元の bashrc にあった export は ~/.bash_exports_origin に保存され読み込まれます。

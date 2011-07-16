@@ -18,3 +18,8 @@ export HISTSIZE=2000
 export HISTFILESIZE=2000
 export HISTCONTROL=ignoreboth
 export HISTIGNORE=ls:fg:exit
+
+# Source original environment variables
+if [ -f ~/.bash_exports_origin ]; then
+	. ~/.bash_exports_origin
+fi
