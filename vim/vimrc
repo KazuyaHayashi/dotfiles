@@ -11,20 +11,21 @@ Bundle "git://github.com/Shougo/neocomplcache.git"
 Bundle "git://github.com/tpope/vim-surround.git"
 Bundle "git://github.com/scrooloose/nerdtree.git"
 Bundle "git://github.com/vim-scripts/taglist.vim.git"
-Bundle "git://github.com/jimenezrick/vimerl.git"
-Bundle 'project.tar.gz'
+"Bundle 'project.tar.gz'
 Bundle 'tagexplorer.vim'
 Bundle 'taglist-plus'
 Bundle 'git://github.com/vim-scripts/ManPageView.git'
-Bundle 'git://github.com/vim-scripts/erlang-indent-file.git'
-Bundle 'git://github.com/vim-scripts/vim-erlang-skeleteons.git'
-" Bundle "git://github.com/Shougo/vimproc.git" 
-" Bundle "git://github.com/Shougo/vimshell.git"
+Bundle "git://github.com/Shougo/vimproc.git" 
+Bundle "git://github.com/Shougo/vimshell.git"
+Bundle "git://github.com/thinca/vim-quickrun.git"
+Bundle "git://github.com/thinca/vim-ref.git"
+"Bundle 'git://github.com/jimenezrick/vimerl.git'
+"Bundle 'git://github.com/vim-scripts/erlang-indent-file.git'
+"Bundle 'git://github.com/vim-scripts/vim-erlang-skeleteons.git'
 " Bundle "git://github.com/Shougo/vimfiler.git"
 " Bundle "git://github.com/scrooloose/nerdcommenter.git"
 " Bundle "git://github.com/msanders/snipmate.vim.git"
 " Bundle "git://gist.github.com/165090.git"
-Bundle "git://github.com/thinca/vim-ref.git"
 " Bundle "git://github.com/tomtom/ttags_vim.git"
 autocmd!
 filetype indent plugin on
@@ -116,7 +117,6 @@ set hidden
 " display setting
 syntax on
 set title
-set number
 set statusline=%n\:%y%F\ \|%{(&fenc!=''?&fenc:&enc).'\|'.&ff.'\|'}%m%r\ %{strftime('%c')}%=<%l/%L:%p%%>
 set laststatus=2
 set cmdheight=2
