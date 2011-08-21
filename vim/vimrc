@@ -4,29 +4,29 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 " self management
-Bundle "git://github.com/gmarik/vundle"
+Bundle 'git://github.com/gmarik/vundle'
 " vim scripts
-Bundle "git://github.com/Shougo/unite.vim.git"
-Bundle "git://github.com/Shougo/neocomplcache.git"
-Bundle "git://github.com/tpope/vim-surround.git"
-Bundle "git://github.com/scrooloose/nerdtree.git"
-Bundle "git://github.com/vim-scripts/taglist.vim.git"
+Bundle 'git://github.com/Shougo/unite.vim.git'
+Bundle 'git://github.com/Shougo/neocomplcache.git'
+Bundle 'git://github.com/tpope/vim-surround.git'
+Bundle 'git://github.com/scrooloose/nerdtree.git'
+Bundle 'git://github.com/vim-scripts/taglist.vim.git'
 "Bundle 'project.tar.gz'
 Bundle 'tagexplorer.vim'
 Bundle 'taglist-plus'
 Bundle 'git://github.com/vim-scripts/ManPageView.git'
-Bundle "git://github.com/Shougo/vimproc.git" 
-Bundle "git://github.com/Shougo/vimshell.git"
+Bundle 'git://github.com/Shougo/vimproc.git' 
+Bundle 'git://github.com/Shougo/vimshell.git'
 Bundle "git://github.com/thinca/vim-quickrun.git"
-Bundle "git://github.com/thinca/vim-ref.git"
+Bundle 'git://github.com/thinca/vim-ref.git'
 "Bundle 'git://github.com/jimenezrick/vimerl.git'
 "Bundle 'git://github.com/vim-scripts/erlang-indent-file.git'
 "Bundle 'git://github.com/vim-scripts/vim-erlang-skeleteons.git'
-" Bundle "git://github.com/Shougo/vimfiler.git"
-" Bundle "git://github.com/scrooloose/nerdcommenter.git"
-" Bundle "git://github.com/msanders/snipmate.vim.git"
-" Bundle "git://gist.github.com/165090.git"
-" Bundle "git://github.com/tomtom/ttags_vim.git"
+" Bundle 'git://github.com/Shougo/vimfiler.git'
+" Bundle 'git://github.com/scrooloose/nerdcommenter.git'
+" Bundle 'git://github.com/msanders/snipmate.vim.git'
+" Bundle 'git://gist.github.com/165090.git'
+" Bundle 'git://github.com/tomtom/ttags_vim.git'
 autocmd!
 filetype indent plugin on
 
@@ -107,6 +107,7 @@ let NERDTreeShowHidden = 1
 
 """ vim option
 " ctags
+set helplang=ja,en
 set tags=tags
 " bell setting
 set visualbell
@@ -213,19 +214,19 @@ function! ToggleClosePair()
 endfunction
 nnoremap <silent> <C-p>{ :call ToggleClosePair()<Enter>
 
-function! CwordVimGrep()
-    let s:keyword = expand("<cword>")
-    let s:command = ":vimgrep /".s:keyword."/g %<LEFT><LEFT><LEFT><LEFT>"
-    echo s:command
-    :execute s:command
-endfunction
-
 " buffer keymap
 nnoremap <silent> <C-b>p :bprevious<Enter> 
 nnoremap <silent> <C-b>n :bnext<Enter>
 " search keymap
-"nnoremap <C-v>g :vimgrep /expand("<cword>")/g %<LEFT><LEFT><LEFT><LEFT>
-nnoremap <C-v>g :call CwordVimGrep()<Enter>
 
+function! Vimhelp(word)
+    execute ":h" a:word
+endfunction
+nnoremap <silent> <C-h><C-v> :call Vimhelp(expand('<cword>'))<Enter>
+
+function! AlcSearch(word)
+    execute ":Ref alc" a:word
+endfunction
+nnoremap <silent> <C-r><C-a> :call AlcSearch(expand('<cword>'))<Enter>
 " }}}
 
