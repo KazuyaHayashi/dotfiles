@@ -11,6 +11,7 @@ Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/tpope/vim-surround.git'
 Bundle 'git://github.com/scrooloose/nerdtree.git'
 Bundle 'git://github.com/vim-scripts/taglist.vim.git'
+Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 "Bundle 'project.tar.gz'
 Bundle 'tagexplorer.vim'
 Bundle 'taglist-plus'
@@ -219,11 +220,14 @@ nnoremap <silent> <C-b>p :bprevious<Enter>
 nnoremap <silent> <C-b>n :bnext<Enter>
 " search keymap
 
+" vim のヘルプを検索する
 function! Vimhelp(word)
     execute ":h" a:word
 endfunction
-nnoremap <silent> <C-h><C-v> :call Vimhelp(expand('<cword>'))<Enter>
+" vimrc を開いた時だけキーバインドが設定されるようにする 
+autocmd FileType vim nnoremap <buffer> <silent> <C-h><C-v> :call Vimhelp(expand('<cword>'))<Enter>
 
+" 英単語の訳を検索する
 function! AlcSearch(word)
     execute ":Ref alc" a:word
 endfunction
