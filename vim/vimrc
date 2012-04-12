@@ -15,7 +15,6 @@ Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 "Bundle 'project.tar.gz'
 Bundle 'tagexplorer.vim'
 Bundle 'taglist-plus'
-Bundle 'git://github.com/vim-scripts/ManPageView.git'
 Bundle 'git://github.com/Shougo/vimproc.git' 
 Bundle 'git://github.com/Shougo/vimshell.git'
 Bundle "git://github.com/thinca/vim-quickrun.git"
