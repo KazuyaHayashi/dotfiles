@@ -22,6 +22,8 @@ NeoBundle 'taglist-plus'
 NeoBundle "git://github.com/thinca/vim-quickrun.git"
 NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/yuratomo/w3m.vim.git'
+NeoBundle 'git://github.com/nvie/vim-flake8.git'
+NeoBundle 'git://github.com/tpope/vim-fugitive.git'
 filetype plugin indent on
 
 
@@ -95,7 +97,7 @@ autocmd FileType vim nnoremap <buffer> <silent> <C-h><C-v> :call Vimhelp(expand(
     " Use smartcase.
     let g:neocomplcache_enable_smart_case = 1
     " Use camel case completion.
-    let g:neocomplcache_enable_camel_case_completion = 1
+    let g:neocomplcache_enable_camel_case_completion = 0
     " Use underbar completion.
     let g:neocomplcache_enable_underbar_completion = 1
     " Set minimum syntax keyword length.
