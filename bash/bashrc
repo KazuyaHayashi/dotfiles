@@ -19,7 +19,15 @@ export HISTFILESIZE=2000
 export HISTCONTROL=ignoreboth
 export HISTIGNORE=ls:fg:exit
 
+export PATH=${PATH}:~/adt-bundle-linux-x86_64-20130219/sdk/tools
+
 # Source original environment variables
 if [ -f ~/.bash_exports_origin ]; then
 	. ~/.bash_exports_origin
+fi
+
+# virualenvwrapper
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/bin/virtualenvwrapper.sh
 fi

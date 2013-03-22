@@ -24,6 +24,7 @@ NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/yuratomo/w3m.vim.git'
 NeoBundle 'git://github.com/nvie/vim-flake8.git'
 NeoBundle 'git://github.com/tpope/vim-fugitive.git'
+NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
 filetype plugin indent on
 
 
@@ -269,3 +270,4 @@ autocmd FileType vim nnoremap <buffer> <silent> <C-h><C-v> :call Vimhelp(expand(
 	" Enable snipMate compatibility feature.
 	" let g:neosnippet#enable_snipmate_compatibility = 1
 
+autocmd BufWritePre * :%s/\s\+$//ge

@@ -20,8 +20,8 @@ function backup()
 
 function install_vundle()
 {
-    if [ ! -e ~/.vim/bundle/vundle ]; then
-        git clone git://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    if [ ! -e ~/.vim/bundle/neobundle.vim/ ]; then
+        git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim/
     fi
 }
 
@@ -35,7 +35,7 @@ function init()
 function setup()
 {
     ln -s ${CUR_DIR}/vim/vimrc ~/.vimrc
-    vim -c BundleInstall
+    vim -c NeoBundleInstall
 }
 
 #
