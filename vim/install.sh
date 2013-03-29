@@ -18,7 +18,7 @@ function backup()
     return 0
 }
 
-function install_vundle()
+function install_neobundle()
 {
     if [ ! -e ~/.vim/bundle/neobundle.vim/ ]; then
         git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim/
@@ -46,5 +46,5 @@ echo "install vimrc"
 echo "make .vim directory"
 init
 echo "checkout vundle"
-install_vundle
+install_neobundle
 setup
