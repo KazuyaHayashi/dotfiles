@@ -34,6 +34,7 @@ function init()
 
 function setup()
 {
+    ln -s ${CUR_DIR}/vim/ftplugin ~/.vim/ftplugin
     ln -s ${CUR_DIR}/vim/vimrc ~/.vimrc
     vim -c NeoBundleInstall
 }
