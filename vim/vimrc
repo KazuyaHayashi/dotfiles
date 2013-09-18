@@ -279,4 +279,10 @@ autocmd FileType vim nnoremap <buffer> <silent> <C-h><C-v> :call Vimhelp(expand(
 	" Enable snipMate compatibility feature.
 	" let g:neosnippet#enable_snipmate_compatibility = 1
 
-autocmd BufWritePre * :%s/\s\+$//ge
+autocmd FileType Python BufWritePre * :%s/\s\+$//ge
+
+set list
+set lcs=tab:>.,trail:_,extends:\
+highlight SpecialKey cterm=NONE ctermfg=7 guifg=7
+highlight JpSpace cterm=underline ctermfg=14 guifg=14
+au BufRead,BufNew * match JpSpace /　/
