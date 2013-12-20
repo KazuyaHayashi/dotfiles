@@ -12,6 +12,7 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
+NeoBundle 'https://github.com/Yggdroot/indentLine'
 NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'tpope/vim-surround'
@@ -63,12 +64,9 @@ function! s:hooks.on_source(bundle)
     let g:acp_enableAtStartup = 0
     let g:neocomplete#enable_smart_case = 1
     " NeoCompleteを有効化
-    "NeoCompleteEnable
+	let g:neocomplete#enable_at_startup = 1
 endfunction
 
-" Insertモードに入るまでロードしない
-NeoBundleLazy 'Shougo/neosnippet.vim', {
-    \ "autoload": {"insert": 1}}
 " 'GundoToggle'が呼ばれるまでロードしない
 NeoBundleLazy 'sjl/gundo.vim', {
     \ "autoload": {"commands": ["GundoToggle"]}}
@@ -131,26 +129,30 @@ NeoBundle "scrooloose/syntastic", {
       \   "mac": ["pip install flake8", "npm -g install coffeelint"],
       \   "unix": ["pip install flake8", "npm -g install coffeelint"],
       \ }}
-NeoBundleLazy "davidhalter/jedi-vim", {
-      \ "autoload": {
-      \   "filetypes": ["python", "python3", "djangohtml"],
-      \ },
-      \ "build": {
-      \   "mac": "pip install jedi",
-      \   "unix": "pip install jedi",
-      \ }}
-let s:hooks = neobundle#get_hooks("jedi-vim")
-function! s:hooks.on_source(bundle)
-  " jediにvimの設定を任せると'completeopt+=preview'するので
-  " 自動設定機能をOFFにし手動で設定を行う
-  let g:jedi#auto_vim_configuration = 0
-  " 補完の最初の項目が選択された状態だと使いにくいためオフにする
-  let g:jedi#popup_select_first = 0
-  " quickrunと被るため大文字に変更
-  let g:jedi#rename_command = '<Leader>R'
-  " gundoと被るため大文字に変更 (2013-06-24 10:00 追記）
-  let g:jedi#goto_assignments_command = '<Leader>G'
-endfunction
+"NeoBundleLazy "davidhalter/jedi-vim", {
+"      \ "autoload": {
+"      \   "filetypes": ["python", "python3", "djangohtml"],
+"      \ },
+"      \ "build": {
+"      \   "mac": "pip install jedi",
+"      \   "unix": "pip install jedi",
+"      \ }}
+"let s:hooks = neobundle#get_hooks("jedi-vim")
+"function! s:hooks.on_source(bundle)
+"  " jediにvimの設定を任せると'completeopt+=preview'するので
+"  " 自動設定機能をOFFにし手動で設定を行う
+"  let g:jedi#auto_vim_configuration = 0
+"  " 補完の最初の項目が選択された状態だと使いにくいためオフにする
+"  let g:jedi#popup_select_first = 0
+"  " quickrunと被るため大文字に変更
+"  let g:jedi#rename_command = '<Leader>R'
+"  " gundoと被るため大文字に変更 (2013-06-24 10:00 追記）
+"  let g:jedi#goto_assignments_command = '<Leader>G'
+"  if !exists('g:neocomplete#force_omni_input_patterns')
+"    let g:neocomplete#force_omni_input_patterns = {}
+"  endif
+"  let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^. \t]\.\w*'
+"endfunction
 
 NeoBundleCheck
 filetype plugin indent on
@@ -294,20 +296,6 @@ function! s:mkdir(dir, force)
   endif
 endfunction
 autocmd MyAutoCmd BufWritePre * call s:mkdir(expand('<afile>:p:h'), v:cmdbang)
-
-" vim 起動時のみカレントディレクトリを開いたファイルの親ディレクトリに指定
-autocmd MyAutoCmd VimEnter * call s:ChangeCurrentDir('', '')
-function! s:ChangeCurrentDir(directory, bang)
-    if a:directory == ''
-        lcd %:p:h
-    else
-        execute 'lcd' . a:directory
-    endif
-
-    if a:bang == ''
-        pwd
-    endif
-endfunction
 
 " ~/.vimrc.localが存在する場合のみ設定を読み込む
 let s:local_vimrc = expand('~/.vimrc.local')
