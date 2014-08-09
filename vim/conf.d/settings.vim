@@ -55,7 +55,6 @@ set showmatch           " 対応する括弧などをハイライト表示する
 set matchtime=3         " 対応括弧のハイライト表示を3秒にする
 set hidden              " バッファを閉じる代わりに隠す（Undo履歴を残すため）
 
-
-""" filetype
+filetype on
 au BufNewFile,BufRead *.mod,*.inc,*.cnf setf php
 
