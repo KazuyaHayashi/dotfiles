@@ -4,7 +4,7 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 set nocompatible
 
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -16,6 +16,7 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git', {
             \   'build' : {
             \       'linux' : 'make -f make_unix.mak',
@@ -36,6 +37,8 @@ NeoBundleLazy 'hynek/vim-python-pep8-indent', {
             \   'filetypes' : ['python'],
             \   }
             \ }
+
+call neobundle#end()
 
 """ plugin settings
 filetype plugin indent on
