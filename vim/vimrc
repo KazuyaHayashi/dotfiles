@@ -8,6 +8,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 set nocompatible
 
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'https://github.com/vim-scripts/YankRing.vim.git'
+NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+" NeoBundle 'https://github.com/Lokaltog/powerline.git'
+NeoBundle 'https://github.com/tpope/vim-repeat.git'
 NeoBundle 'https://github.com/Yggdroot/indentLine'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'tpope/vim-surround'
@@ -37,6 +41,12 @@ NeoBundleLazy 'hynek/vim-python-pep8-indent', {
             \   'filetypes' : ['python'],
             \   }
             \ }
+NeoBundleLazy 'https://github.com/pangloss/vim-javascript.git', {
+            \ 'autoload' : {
+            \   'filetypes' : ['javascript,html'],
+            \   }
+            \ }
+call neobundle#end()
 
 call neobundle#end()
 
