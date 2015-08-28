@@ -21,6 +21,7 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git', {
             \   'build' : {
             \       'linux' : 'make -f make_unix.mak',
@@ -46,6 +47,8 @@ NeoBundleLazy 'https://github.com/pangloss/vim-javascript.git', {
             \   'filetypes' : ['javascript,html'],
             \   }
             \ }
+call neobundle#end()
+
 call neobundle#end()
 
 """ plugin settings
