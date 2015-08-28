@@ -20,6 +20,7 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'git://github.com/Shougo/vimproc.git', {
             \   'build' : {
             \       'linux' : 'make -f make_unix.mak',
