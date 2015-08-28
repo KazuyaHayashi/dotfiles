@@ -49,8 +49,6 @@ NeoBundleLazy 'https://github.com/pangloss/vim-javascript.git', {
             \ }
 call neobundle#end()
 
-call neobundle#end()
-
 """ plugin settings
 filetype plugin indent on
 
