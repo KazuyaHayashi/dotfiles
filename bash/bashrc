@@ -3,7 +3,7 @@
 # alias setting
 alias rm="rm -i"
 alias grep="grep --color=auto"
-alias ls="ls --color=auto"
+alias ls="ls -G"
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -19,7 +19,10 @@ export HISTFILESIZE=2000
 export HISTCONTROL=ignoreboth
 export HISTIGNORE=ls:fg:exit
 
-export PATH=${PATH}:~/adt-bundle-linux-x86_64-20130219/sdk/tools
+export PATH=/usr/local/bin:${PATH}:~/adt-bundle-linux-x86_64-20130219/sdk/tools
+
+# Go path
+export GOPATH=$HOME/go_work
 
 # Source original environment variables
 if [ -f ~/.bash_exports_origin ]; then
@@ -27,11 +30,36 @@ if [ -f ~/.bash_exports_origin ]; then
 fi
 
 # virualenvwrapper
-if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/bin/virtualenvwrapper.sh
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-if [ -f /usr/share/bash-completion/bash_completion ]; then
-    source /usr/share/bash-completion/bash_completion
+# bash completion
+if [ -f /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
 fi
+
+# git completation
+if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+    source /usr/local/etc/bash_completion.d/git-prompt.sh
+    if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
+        source /usr/local/git/contrib/completion/git-completion.bash
+        GIT_PS1_SHOWDIRTYSTATE=true
+        export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+    fi
+fi
+
+# ssh 時に新規ウィンドウを作る
+ssh_tmux() {
+    ssh_cmd="ssh $@"
+    tmux new-window -n "$*" "$ssh_cmd"
+}
+
+if [ $TERM = "screen" ] ; then
+    tmux lsw
+    if [ $? -eq 0 ] ; then
+        alias ssh=ssh_tmux
+    fi
+fi
+eval "$(direnv hook bash)"
