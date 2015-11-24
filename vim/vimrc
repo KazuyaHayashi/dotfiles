@@ -13,8 +13,9 @@ NeoBundle 'https://github.com/tpope/vim-fugitive.git'
 " NeoBundle 'https://github.com/Lokaltog/powerline.git'
 NeoBundle 'https://github.com/tpope/vim-repeat.git'
 NeoBundle 'https://github.com/Yggdroot/indentLine'
-NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'https://github.com/Shougo/unite.vim.git'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
@@ -22,7 +23,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'thinca/vim-quickrun.git'
-NeoBundle 'git://github.com/Shougo/vimproc.git', {
+NeoBundle 'https://github.com/Shougo/vimproc.git', {
             \   'build' : {
             \       'linux' : 'make -f make_unix.mak',
             \   }
@@ -32,7 +33,7 @@ NeoBundle 'git://github.com/Shougo/vimproc.git', {
 "            \   'filetypes' : ['python'],
 "            \   }
 "            \ }
-NeoBundleLazy 'git://github.com/nvie/vim-flake8.git', {
+NeoBundleLazy 'https://github.com/nvie/vim-flake8.git', {
             \ 'autoload' : {
             \   'filetypes' : ['python'],
             \   }
@@ -55,3 +56,5 @@ filetype plugin indent on
 """ read settings
 set runtimepath+=~/.vim
 runtime! conf.d/*.vim
+
+set tabpagemax=30
