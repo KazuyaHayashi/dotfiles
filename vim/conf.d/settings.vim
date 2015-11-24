@@ -12,6 +12,9 @@ set autoread
 nnoremap <silent> <C-r>s :source $HOME/.vimrc<Enter>
 nnoremap <silent> <C-r>e :tabnew $HOME/.vimrc<Enter>
 
+"" Open new tab to jump tag target
+nnoremap <C-]> :tab split<CR>:exec("tjump ".expand("<cword>"))<CR>
+
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
 nnoremap N Nzz
