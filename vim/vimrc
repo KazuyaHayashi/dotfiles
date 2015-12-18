@@ -27,11 +27,11 @@ NeoBundle 'https://github.com/Shougo/vimproc.git', {
             \       'linux' : 'make -f make_unix.mak',
             \   }
             \ }
-"NeoBundleLazy 'davidhalter/jedi-vim', {
-"            \ 'autoload' : {
-"            \   'filetypes' : ['python'],
-"            \   }
-"            \ }
+NeoBundleLazy 'davidhalter/jedi-vim', {
+            \ 'autoload' : {
+            \   'filetypes' : ['python'],
+            \   }
+            \ }
 NeoBundleLazy 'https://github.com/nvie/vim-flake8.git', {
             \ 'autoload' : {
             \   'filetypes' : ['python'],
