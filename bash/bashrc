@@ -1,4 +1,13 @@
 # .bashrc
+shopt -s cdspell
+shopt -s checkwinsize
+shopt -s cmdhist
+shopt -s dotglob
+shopt -s expand_aliases
+shopt -s extglob
+shopt -s histappend
+shopt -s hostcomplete
+shopt -s nocaseglob
 
 # alias setting
 alias rm="rm -i"
@@ -14,15 +23,20 @@ fi
 export LANG=ja_JP.UTF-8
 
 # history setting
-export HISTSIZE=2000
-export HISTFILESIZE=2000
+export HISTSIZE=10000
+export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 export HISTIGNORE=ls:fg:exit
+export PROMPT_COMMAND='history -a; history -r'
 
 export PATH=/usr/local/bin:${PATH}:~/adt-bundle-linux-x86_64-20130219/sdk/tools
 
 # Go path
 export GOPATH=$HOME/go_work
+
+# prompt
+PS1='[\u@\h \W]\$ '
+BROWSER=/usr/bin/xdg-open
 
 # Source original environment variables
 if [ -f ~/.bash_exports_origin ]; then
@@ -34,6 +48,7 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh
 fi
+export PIP_RESPECT_VIRTUALENV=true
 
 # bash completion
 if [ -f /usr/local/etc/bash_completion ]; then
@@ -43,8 +58,8 @@ fi
 # git completation
 if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
     source /usr/local/etc/bash_completion.d/git-prompt.sh
-    if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
-        source /usr/local/git/contrib/completion/git-completion.bash
+    if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+        source /usr/local/etc/bash_completion.d/git-completion.bash
         GIT_PS1_SHOWDIRTYSTATE=true
         export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
     fi
