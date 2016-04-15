@@ -98,3 +98,19 @@ let g:neocomplete#sources#omni#input_patterns.perl =
 "    let col = col('.') - 1
 "    return !col || getline('.')[col - 1]  =~ '\s'
 "  endfunction"}}}
+
+" neco-look
+if !exists('g:neocomplete#text_mode_filetypes')
+    let g:neocomplete#text_mode_filetypes = {}
+endif
+let g:neocomplete#text_mode_filetypes = {
+	\ 'rst': 1,
+	\ 'markdown': 1,
+	\ 'gitrebase': 1,
+	\ 'gitcommit': 1,
+	\ 'vcs-commit': 1,
+	\ 'hybrid': 1,
+	\ 'text': 1,
+	\ 'help': 1,
+	\ 'tex': 1,
+	\ }
