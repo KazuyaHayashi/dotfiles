@@ -6,14 +6,14 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath^=$HOME/.vim/dein//repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin(expand('~/.vim/bundle'))
+call dein#begin(expand($HOME.'/.vim/dein/'))
 
 " Let dein manage dein
 " Required:
-call dein#add('Shougo/dein.vim', {'build': 'make'})
+call dein#add('Shougo/dein.vim')
 
 " Add or remove your plugins here:
 call dein#add('Shougo/neosnippet.vim')
@@ -32,13 +32,18 @@ call dein#add('majutsushi/tagbar')
 call dein#add('thinca/vim-quickrun.git')
 call dein#add('nvie/vim-flake8.git')
 call dein#add('hynek/vim-python-pep8-indent')
-call dein#add('pangloss/vim-javascript.git', {'lazy': 1, 'on_ft': ['javascript']})
+call dein#add('pangloss/vim-javascript.git')
 call dein#add('scrooloose/syntastic')
 call dein#add('mbbill/undotree')
+call dein#add('ujihisa/neco-look')
 
 call dein#config(['nvie/vim-flake8.git', 'hynek/vim-python-pep8-indent'], {
             \ 'lazy' : 1,
             \ 'on_ft' : ['python']
+            \ })
+call dein#config(['pangloss/vim-javascript.git'], {
+            \ 'lazy' : 1,
+            \ 'on_ft' : ['javascript']
             \ })
 
 " Required:
