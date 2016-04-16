@@ -38,6 +38,7 @@ call dein#add('mbbill/undotree')
 call dein#add('ujihisa/neco-look')
 call dein#add('scrooloose/nerdtree')
 call dein#add('ternjs/tern_for_vim', {'build': 'npm install'})
+call dein#add('bronson/vim-trailing-whitespace')
 "
 call dein#config(['nvie/vim-flake8.git', 'hynek/vim-python-pep8-indent'], {
             \ 'lazy' : 1,
