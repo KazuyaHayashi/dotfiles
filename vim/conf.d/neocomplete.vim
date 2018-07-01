@@ -98,3 +98,4 @@ let g:neocomplete#sources#omni#input_patterns.perl =
 "    let col = col('.') - 1
 "    return !col || getline('.')[col - 1]  =~ '\s'
 "  endfunction"}}}
+
