@@ -12,7 +12,7 @@ shopt -s nocaseglob
 # alias setting
 alias rm="rm -i"
 alias grep="grep --color=auto"
-alias ls="ls -G"
+alias ls="ls -GF"
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
