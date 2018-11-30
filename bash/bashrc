@@ -9,18 +9,21 @@ shopt -s histappend
 shopt -s hostcomplete
 shopt -s nocaseglob
 
-# alias setting
-alias rm="rm -i"
-alias grep="grep --color=auto"
-alias ls="ls -GF"
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+# bash completion
+if [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion
+fi
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+	source /usr/share/bash-completion/bash_completion
+fi
+if [ -f ~/.bash_local ]; then
+    source ~/.bash_local
 fi
 
-# User specific aliases and functions
-export LANG=ja_JP.UTF-8
+xhost +local:root > /dev/null 2>&1
+
+complete -cf sudo
 
 # history setting
 export HISTSIZE=10000
@@ -29,19 +32,50 @@ export HISTCONTROL=ignoreboth
 export HISTIGNORE=ls:fg:exit
 export PROMPT_COMMAND='history -a; history -r'
 
-export PATH=/usr/local/bin:${PATH}:~/adt-bundle-linux-x86_64-20130219/sdk/tools
+# User specific aliases and functions
+export LANG=ja_JP.UTF-8
+export CVS_RSH=ssh
 
-# Go path
-export GOPATH=$HOME/go_work
+# alias setting
+alias grep="grep --color=auto"
+alias ls="ls -GF"
+alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias grep='grep --color=tty -d skip'
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias np='nano PKGBUILD'
+alias rm="rm -i"
+
+# ex - archive extractor
+# usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
 # prompt
-PS1='[\u@\h \W]\$ '
-BROWSER=/usr/bin/xdg-open
-
-# Source original environment variables
-if [ -f ~/.bash_exports_origin ]; then
-	. ~/.bash_exports_origin
-fi
+export PS1='[\u@\h \W]\$ '
+export BROWSER=/usr/bin/xdg-open
 
 # virualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
@@ -49,11 +83,6 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 export PIP_RESPECT_VIRTUALENV=true
-
-# bash completion
-if [ -f /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
-fi
 
 # git completation
 if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then

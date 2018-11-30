@@ -1,58 +1,68 @@
 filetype off
 
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-set nocompatible
+" Required:
+set runtimepath^=$HOME/.vim/dein//repos/github.com/Shougo/dein.vim
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'https://github.com/vim-scripts/YankRing.vim.git'
-NeoBundle 'https://github.com/tpope/vim-fugitive.git'
-" NeoBundle 'https://github.com/Lokaltog/powerline.git'
-NeoBundle 'https://github.com/tpope/vim-repeat.git'
-NeoBundle 'https://github.com/Yggdroot/indentLine'
-NeoBundle 'https://github.com/Shougo/unite.vim.git'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'thinca/vim-quickrun.git'
-NeoBundle 'https://github.com/Shougo/vimproc.git', {
-            \   'build' : {
-            \       'linux' : 'make -f make_unix.mak',
-            \   }
-            \ }
-"NeoBundleLazy 'davidhalter/jedi-vim', {
-"            \ 'autoload' : {
-"            \   'filetypes' : ['python'],
-"            \   }
-"            \ }
-NeoBundleLazy 'https://github.com/nvie/vim-flake8.git', {
-            \ 'autoload' : {
-            \   'filetypes' : ['python'],
-            \   }
-            \ }
-NeoBundleLazy 'hynek/vim-python-pep8-indent', {
-            \ 'autoload' : {
-            \   'filetypes' : ['python'],
-            \   }
-            \ }
-NeoBundleLazy 'https://github.com/pangloss/vim-javascript.git', {
-            \ 'autoload' : {
-            \   'filetypes' : ['javascript,html'],
-            \   }
-            \ }
-NeoBundle 'marijnh/tern_for_vim', {
-            \ 'build' : {
-            \   'others' : 'npm install'
-            \   }
-            \ }
-call neobundle#end()
+" Required:
+call dein#begin(expand($HOME.'/.vim/dein/'))
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+
+" You can specify revision/branch/tag.
+" call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+"call dein#add('Shougo/vimshell')
+
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/unite.vim.git')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('tpope/vim-fugitive.git')
+call dein#add('Yggdroot/indentLine')
+call dein#add('majutsushi/tagbar')
+call dein#add('thinca/vim-quickrun.git')
+call dein#add('nvie/vim-flake8.git')
+call dein#add('leafgarland/typescript-vim')
+call dein#add('Quramy/tsuquyomi')
+call dein#add('hynek/vim-python-pep8-indent')
+"call dein#add('pangloss/vim-javascript.git')
+call dein#add('w0rp/ale')
+call dein#add('mbbill/undotree')
+call dein#add('ujihisa/neco-look')
+call dein#add('scrooloose/nerdtree')
+call dein#add('ternjs/tern_for_vim', {'build': 'npm install'})
+call dein#add('bronson/vim-trailing-whitespace')
+"
+call dein#config(['nvie/vim-flake8.git', 'hynek/vim-python-pep8-indent'], {
+            \ 'lazy' : 1,
+            \ 'on_ft' : ['python']
+            \ })
+"call dein#config(['pangloss/vim-javascript.git'], {
+"            \ 'lazy' : 1,
+"            \ 'on_ft' : ['javascript']
+"            \ })
+
+" Required:
+call dein#end()
+
+" Required:
+filetype plugin indent on
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
 
 """ plugin settings
 filetype plugin indent on

@@ -18,10 +18,14 @@ function backup()
     return 0
 }
 
-function install_neobundle()
+function install_dein()
 {
-    if [ ! -e ~/.vim/bundle/neobundle.vim/ ]; then
-        git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim/
+    INSTALLER=/var/tmp/installer.sh.$$
+    DEIN_PATH=${HOME}/.vim/dein
+    if [ ! -e ${DEIN_PATH} ]; then
+        curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ${INSTALLER}
+        sh ${INSTALLER} ${DEIN_PATH}
+        vim -c ':call dein#install()'
     fi
 }
 
@@ -48,6 +52,6 @@ backup
 echo "install vimrc"
 echo "make .vim directory"
 init
-echo "checkout vundle"
-install_neobundle
+echo "checkout dein"
+install_dein
 setup
